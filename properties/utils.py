@@ -1,7 +1,4 @@
 from django_redis import get_redis_connection
-import logging
-
-logger = logging.getLogger(__name__)
 
 def get_redis_cache_metrics():
     """
@@ -16,7 +13,7 @@ def get_redis_cache_metrics():
     total_requests = hits + misses
     hit_ratio = hits / total_requests if total_requests > 0 else 0
 
-    # Only log info, not error
-    logger.info(f"Redis Cache Metrics - Hits: {hits}, Misses: {misses}, Hit Ratio: {hit_ratio:.2f}")
+    # Log metrics using print instead of logger
+    print(f"Redis Cache Metrics - Hits: {hits}, Misses: {misses}, Hit Ratio: {hit_ratio:.2f}")
 
     return hit_ratio
